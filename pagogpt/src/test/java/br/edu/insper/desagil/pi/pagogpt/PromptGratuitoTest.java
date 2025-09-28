@@ -8,14 +8,14 @@ public class PromptGratuitoTest {
 
     @Test
     void precoCurto(){
-        PromptGratuito p = new PromptGratuito("pergunta", 10);
-        assertEquals(0, p.calculaPreco());
+        PromptGratuito pg = new PromptGratuito("pergunta", 10);
+        assertEquals(0, pg.calculaPreco());
     }
 
     @Test
     void precoLongo(){
-        PromptGratuito p = new PromptGratuito("pergunta longa", 10);
-        assertEquals(14, p.calculaPreco());
+        PromptGratuito pg = new PromptGratuito("pergunta longa", 10);
+        assertEquals(14, pg.calculaPreco());
     }
 
 }

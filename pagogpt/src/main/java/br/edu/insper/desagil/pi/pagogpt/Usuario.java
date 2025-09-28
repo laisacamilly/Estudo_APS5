@@ -2,22 +2,22 @@ package br.edu.insper.desagil.pi.pagogpt;
 
 public class Usuario {
 
-    /* Atributos: */
+    /* Atributos:*/
     private String email;
     private String nome;
 
-    /* Construtor: ----------- */
+    /* Construtor:*/
     public Usuario(String email, String nome){
         this.email = email;
         this.nome = nome;
     }
 
-    /* Email pode ser lido e não escrito: -------------- */
+    /* Email pode ser lido e não escrito:*/
     public String getEmail() {
         return email;
     }
 
-    /* Nome pode ser lido e escrito: ----------------- */
+    /* Nome pode ser lido e escrito:*/
     public String getNome() {
         return nome;
     }
@@ -25,5 +25,4 @@ public class Usuario {
     public void setNome(String nome) {
         this.nome = nome;
     }
-
 }

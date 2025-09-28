@@ -5,17 +5,17 @@ import java.util.List;
 
 public class Conversa {
 
-    /* Atributos: */
+    /* Atributos:*/
     private Usuario usuario;
     private List<Prompt> prompts;
 
-    /* Construtor: ------*/
+    /* Construtor:*/
     public Conversa(Usuario usuario){
         this.usuario = usuario;
-        this.prompts= new ArrayList<>();
+        this.prompts = new ArrayList<>();
     }
 
-    /* Usuario pode ser lido e não escrito: -------*/
+    /* Usuario pode ser lido e não escrito:*/
     public Usuario getUsuario() {
         return usuario;
     }
@@ -25,25 +25,22 @@ public class Conversa {
         prompts.add(prompt);
     }
 
-    /* Metodo calculaSubTotal: */
+    /* Metodo calculaSubTotal:*/
     public double calculaSubTotal(){
         double soma = 0;
-        for(Prompt prompt : prompts){
+        for (Prompt prompt : prompts){
             soma += prompt.calculaPreco();
         }
         return soma;
     }
 
-    /* Metodo calculaSubMedia: */
+    /* Metodo calculaSubMedia:*/
     public double calculaSubMedia(){
-        if (prompts.isEmpty()){
+        if(prompts.isEmpty()){
             throw new IllegalStateException("Nenhum prompt!");
         }
         else{
-            return (calculaSubTotal() / prompts.size());
-            }
+            return (calculaSubTotal()/ prompts.size());
         }
+    }
 }
-
-
-

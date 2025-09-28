@@ -1,50 +1,60 @@
 package br.edu.insper.desagil.pi.pagogpt;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ConversaTest {
 
     @Test
     void subTotalVazio(){
-        Usuario u = new Usuario("laisa@gmail.com", "laisa");
-        Conversa c = new Conversa(u);
-        assertEquals(0,c.calculaSubTotal());
+        Conversa c = new Conversa(new Usuario("laisa@gmail", "laisa"));
+        assertEquals(0, c.calculaSubTotal());
     }
 
     @Test
     void subTotal(){
-        Usuario u = new Usuario("laisa@gmail.com", "laisa");
-        Conversa c = new Conversa(u);
+        Conversa c = new Conversa(new Usuario("laisa@gmail", "laisa"));
 
-        PromptGratuito p1 = new PromptGratuito("pergunta",10); /* menor q limite então é 0 */
-        PromptPago p2 = new PromptPago("pergunta",0.1); /* 0.8 */
-        PromptPago p3 = new PromptPago("perguntaa",0.01); /* 0.09 */
+        /* Tres prompts e adiciona na lista: */
+        PromptGratuito p1 = new PromptGratuito("pergunta", 10);
+        PromptPago p2 = new PromptPago("pergunta", 0.1);
+        PromptPago p3 = new PromptPago("pergunta", 0.01);
 
         c.adiciona(p1);
         c.adiciona(p2);
         c.adiciona(p3);
 
-        assertEquals( (0 + 0.8 + 0.09), c.calculaSubTotal(), 0.01);
+        assertEquals((0 + 0.8 + 0.08), c.calculaSubTotal(), 0.01);
 
     }
 
     @Test
-    void porPost(){
-        Usuario u = new Usuario("laisa@gmail.com", "laisa");
-        Conversa c = new Conversa(u);
+    void porPostVazio(){
+        Conversa c = new Conversa(new Usuario("laisa@gmail", "laisa"));
 
-        PromptGratuito p1 = new PromptGratuito("pergunta",10); /* menor q limite então é 0 */
-        PromptPago p2 = new PromptPago("pergunta",0.1); /* 0.8 */
-        PromptPago p3 = new PromptPago("perguntaa",0.01); /* 0.09 */
+        Exception ex = assertThrows(IllegalStateException.class, () -> { c.calculaSubMedia(); } );
+        assertEquals("Nenhum prompt!", ex.getMessage());
+    }
+
+    @Test
+    void porPost(){
+        Conversa c = new Conversa(new Usuario("laisa@gmail", "laisa"));
+
+        /* Tres prompts e adiciona na lista: */
+        PromptGratuito p1 = new PromptGratuito("pergunta", 10);
+        PromptPago p2 = new PromptPago("pergunta", 0.1);
+        PromptPago p3 = new PromptPago("pergunta", 0.01);
 
         c.adiciona(p1);
         c.adiciona(p2);
         c.adiciona(p3);
 
-        assertEquals((0 + 0.8 + 0.09)/3, c.calculaSubMedia(), 0.01);
+        assertEquals((0 + 0.8 + 0.08)/3, c.calculaSubMedia(), 0.01);
     }
 
 }

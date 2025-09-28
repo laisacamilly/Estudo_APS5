@@ -2,31 +2,27 @@ package br.edu.insper.desagil.pi.pagogpt;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class PromptPagoTest {
-    /* Atributos: */
-    private PromptPago p;
 
     @Test
     void constroi(){
-        p = new PromptPago("pergunta", 0.1);
-        assertEquals("pergunta", p.getPergunta());
-        assertNull(p.getResposta());
-
+        PromptPago pg = new PromptPago("pergunta", 0.1);
+        assertSame("pergunta", pg.getPergunta());
+        assertNull(null, pg.getResposta());
     }
 
     @Test
     void mudaResposta(){
-        p = new PromptPago("pergunta", 0.1);
-        p.setResposta("resposta");
-        assertEquals("resposta", p.getResposta());
+        PromptPago pg = new PromptPago("pergunta", 0.1);
+        pg.setResposta("resposta");
+        assertEquals("resposta", pg.getResposta());
     }
 
     @Test
     void preco(){
-        p = new PromptPago("pergunta", 0.1);
-        assertEquals(0.8, p.calculaPreco(), 0.01);
+        PromptPago pg = new PromptPago("pergunta", 0.1);
+        assertEquals(0.8, pg.calculaPreco(), 0.01);
     }
 }

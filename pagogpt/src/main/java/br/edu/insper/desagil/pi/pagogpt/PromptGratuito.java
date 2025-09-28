@@ -1,26 +1,24 @@
 package br.edu.insper.desagil.pi.pagogpt;
 
-public class PromptGratuito extends Prompt{
+public class PromptGratuito extends Prompt {
 
     /* Atributos:*/
-    private Integer limite;
+    private int limite;
 
-    /* Construtor: */
-    public PromptGratuito(String pergunta, Integer limite) {
+    /* Construtor:*/
+    public PromptGratuito(String pergunta, int limite){
         super(pergunta);
         this.limite = limite;
     }
 
-    /* Metodo sobscreve:*/
     @Override
     public double calculaPreco(){
-        if (getPergunta().length() < limite){
+        if(getPergunta().length() < limite){
             return 0;
         }
         else{
             return getPergunta().length();
         }
     }
-
 
 }

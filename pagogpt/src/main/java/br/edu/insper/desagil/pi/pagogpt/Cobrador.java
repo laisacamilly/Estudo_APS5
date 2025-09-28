@@ -7,7 +7,7 @@ public class Cobrador {
     /* Atributos:*/
     private List<Conversa> conversas;
 
-    /* Construtor: */
+    /* Construtor:*/
     public Cobrador(List<Conversa> conversas) {
         this.conversas = conversas;
     }
@@ -15,16 +15,13 @@ public class Cobrador {
     /* Metodo calculaTotal:*/
     public double calculaTotal(Usuario usuario){
         double soma = 0;
-
-        /* Comparados por email*/
         String email = usuario.getEmail();
 
-        for (Conversa conversa : conversas){
-            if (conversa.getUsuario().getEmail().equals(email)) {
+        for(Conversa conversa : conversas){
+            if(conversa.getUsuario().getEmail().equals(email)){
                 soma += conversa.calculaSubTotal();
             }
         }
         return soma;
     }
-
 }

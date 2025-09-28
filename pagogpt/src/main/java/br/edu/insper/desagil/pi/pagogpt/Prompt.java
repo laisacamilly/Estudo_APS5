@@ -2,22 +2,22 @@ package br.edu.insper.desagil.pi.pagogpt;
 
 public abstract class Prompt {
 
-    /* Atributos: */
+    /* Atributos:*/
     private String pergunta;
     private String resposta;
 
-    /* Construtor: --------- */
+    /* Construtor:*/
     public Prompt(String pergunta){
         this.pergunta = pergunta;
         this.resposta = null;
     }
 
-    /* Pergunta pode ser lida: ---------- */
+    /* Pergunta pode ser lida e não escrita:*/
     public String getPergunta() {
         return pergunta;
     }
 
-    /* Resposta pode ser lida e escrita: ------------*/
+    /* Resposta pode ser lida e escrita:*/
     public String getResposta() {
         return resposta;
     }
@@ -26,7 +26,8 @@ public abstract class Prompt {
         this.resposta = resposta;
     }
 
-    /* Metodo calculaPreco: */
+    /* Metodo calculaPreco:*/
     public abstract double calculaPreco();
+
 
 }
